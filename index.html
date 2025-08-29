@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BFHL API Tester</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #0070f3;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    pre {
+      background: #eee;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>BFHL API Tester</h1>
+  
+  <label for="dataInput">Enter Data (comma separated):</label>
+  <input id="dataInput" type="text" placeholder="e.g. A,1,B,2" />
+
+  <button onclick="sendData()">Send to API</button>
+
+  <h2>Response:</h2>
+  <pre id="responseBox">No response yet...</pre>
+
+  <script>
+    async function sendData() {
+      const input = document.getElementById("dataInput").value;
+      const dataArray = input.split(",").map(item => item.trim());
+
+      try {
+        const res = await fetch("https://bfhl-api-one-zeta.vercel.app/api/bfhl", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: dataArray })
+        });
+        const json = await res.json();
+        document.getElementById("responseBox").textContent = JSON.stringify(json, null, 2);
+      } catch (err) {
+        document.getElementById("responseBox").textContent = "Error: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
