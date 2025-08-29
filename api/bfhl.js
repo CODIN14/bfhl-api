@@ -1,8 +1,8 @@
 // --- Fill these with YOUR details ---
-const FULL_NAME = "colin_paul";       // lowercase with underscores
-const DOB_DDMMYYYY = "17091999";      // ddmmyyyy
-const EMAIL = "colin@example.com";
-const ROLL_NUMBER = "ABCD123";
+const FULL_NAME = "colin_paul_ebby";       // lowercase with underscores
+const DOB_DDMMYYYY = "14122003";      // ddmmyyyy
+const EMAIL = "colinchettiam@gmail.com";
+const ROLL_NUMBER = "22BCE2216";
 // -----------------------------------
 
 const isNumericString = (s) => /^[-+]?\d+$/.test(s);
